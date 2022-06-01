@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 const TimeTable = () => {
   const [data, setData] = useState([]);
@@ -13,13 +13,13 @@ const TimeTable = () => {
 
   useEffect(() => {
     fetchData();
-    // console.log(data);
+    
   }, []);
 
   const handleChange = (e) => {
-    //   e.preventDefault()
-    const { id, value } = e.target; //ES6 object destructuring.
-    // console.log(id, value, checked, type);
+   
+    const { id, value } = e.target; 
+    
     setForm({
       ...form,
       [id]: value,
@@ -40,8 +40,6 @@ const TimeTable = () => {
     })
       .then((res) => {
         console.log(res);
-        // console.log(res.data)
-        // getData();
         fetchData();
       })
       .catch((err) => console.log(err));
@@ -62,7 +60,7 @@ const TimeTable = () => {
       .catch((err) => console.log(err));
   };
   const { department, course, room, instructor, meetingTiming } = form;
-//   console.log(form);
+  //   console.log(form);
   return (
     <div className="mx-auto table-responsive" style={{ textAlign: "center" }}>
       <h1>Time Table</h1>
@@ -71,7 +69,7 @@ const TimeTable = () => {
           required
           placeholder="Department"
           type="text"
-          //   name="department"
+          name="department"
           id="department"
           className="form-control col mr-2"
           onChange={handleChange}
@@ -117,10 +115,13 @@ const TimeTable = () => {
           onChange={handleChange}
           value={meetingTiming}
         />
-        {/* <button className="btn btn-success" type="submit">
-          Add
-              </button> */}
-        <input className="btn btn-success" type="submit" value="SUBMIT" onSubmit={handleSubmit}/>
+        
+        <input
+          className="btn btn-success"
+          type="submit"
+          value="SUBMIT"
+          onSubmit={handleSubmit}
+        />
       </form>
 
       <table className="table align-middle table-striped">
